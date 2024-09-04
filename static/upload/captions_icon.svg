@@ -1,0 +1,11 @@
+<svg width="400px" height="400px" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <polyline points="90,130 170,50 310,50 310,350 90,350 90,130 170,130 170,50" fill="none" stroke="black" stroke-width="10px"/>
+    <polyline points="190,100 280,100" fill="none" stroke="black" stroke-width="10px"/>
+    <polyline points="190,135 280,135" fill="none" stroke="black" stroke-width="10px"/>
+    <polyline points="110,170 280,170" fill="none" stroke="black" stroke-width="10px"/>
+    <polyline points="110,205 280,205" fill="none" stroke="black" stroke-width="10px"/>
+    <text font-size="80" font-family="Impact" textLength="180" x="110" y="290">
+        SRT
+    </text>
+    <polyline points="110,315 280,315" fill="none" stroke="black" stroke-width="10px"/>
+</svg>

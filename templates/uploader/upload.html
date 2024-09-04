@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <form action="upload/" method="post" enctype="multipart/form-data" class="upload-form">
+            {% csrf_token %}
+            <div class="dropzone-grid">
+                <div class="dropzone" id="drop-video">
+                    <div class="dropzone_content">
+                        <span class="dropzone_prompt">Drop video here or click to upload</span>
+                        <input type="file" name="video" class="dropzone_input" accept="video/*">
+                    </div>
+                </div>
+                <div class="dropzone" id="drop-captions">
+                    <div class="dropzone_content">
+                        <span class="dropzone_prompt">Drop .srt here or click to upload</span>
+                        <input type="file" name="captions" class="dropzone_input" accept=".srt">
+                    </div>
+                </div>
+            </div>
+            <button class="upload-btn" type="submit">Upload</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    var VAR_VIDEO_ICON = "{% static 'upload/video_icon.svg' %}";
+    var VAR_CAPTIONS_ICON = "{% static 'upload/captions_icon.svg' %}";
+</script>
+<script src="{% static 'upload/drag_drop.js' %}"></script>
+<script src="{% static 'upload/upload_btn.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'upload/style.css' %}">
+{% endblock %}

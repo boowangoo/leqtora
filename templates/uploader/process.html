@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="content">
+        <div id="processing-area">
+            <div class="video-preview">
+                <!-- Video preview will be displayed here -->
+                <img class="video-preview-img" src="" alt="Video preview">
+                <div class="video-preview-control">
+                    <label for="video-slider"></label>
+                    <input class="video-slider" type="range" min="0" max="128" value="0" step="1">
+                </div>
+            </div>
+            <div class="preview-options">
+                <div class="preview-option">
+                    <label for="video-crop-left">Crop Left</label>
+                    <input class="video-crop-left" type="range" min="0" max="128" value="0" step="1">
+                </div>
+                <div class="preview-option">
+                    <label for="video-crop-right">Crop Right</label>
+                    <input class="video-crop-right" type="range" min="0" max="128" value="0" step="1">
+                </div>
+                <div class="preview-option">
+                    <label for="video-crop-top">Crop Top</label>
+                    <input class="video-crop-top" type="range" min="0" max="128" value="0" step="1">
+                </div>
+                <div class="preview-option">
+                    <label for="video-crop-bottom">Crop Bottom</label>
+                    <input class="video-crop-bottom" type="range" min="0" max="128" value="0" step="1">
+                </div>
+            </div>
+            <div class="captions-preview">
+                <!-- Captions preview will be displayed here -->
+                <textarea id="captions-textbox">{{ captions_url }}</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+</script>
+<script src="{% static 'process/process.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'process/style.css' %}">
+{% endblock %}

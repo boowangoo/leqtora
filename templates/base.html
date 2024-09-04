@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Leqtora{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/style.css' %}">    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Leqtora</h1>
+        <h2 class="sub-title">Make notes from lecture videos.</h2>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
