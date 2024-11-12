@@ -1,0 +1,31 @@
+{% load static %}
+
+{% block preview_options %}
+<div class="preview-options">
+    <div class="preview-option">
+        <button class="add-marker">Add Marker</button>
+    </div>
+    <div class="preview-option">
+        <label for="video-crop-left">Crop Left</label>
+        <input class="video-crop-left" type="range" min="0" max="256" value="0" step="1">
+    </div>
+    <div class="preview-option">
+        <label for="video-crop-right">Crop Right</label>
+        <input class="video-crop-right" type="range" min="0" max="256" value="0" step="1">
+    </div>
+    <div class="preview-option">
+        <label for="video-crop-top">Crop Top</label>
+        <input class="video-crop-top" type="range" min="0" max="256" value="0" step="1">
+    </div>
+    <div class="preview-option">
+        <label for="video-crop-bottom">Crop Bottom</label>
+        <input class="video-crop-bottom" type="range" min="0" max="256" value="0" step="1">
+    </div>
+</div>
+{% endblock %}
+
+{% block js_prev_opt %}
+<script>
+</script>
+<script src="{% static 'process/preview_options.js' %}"></script>
+{% endblock %}

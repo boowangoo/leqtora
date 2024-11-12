@@ -1,0 +1,18 @@
+{% load static %}
+
+{% block video_preview %}
+<div class="video-preview">
+    <!-- Video preview will be displayed here -->
+    <canvas class="video-preview-canvas"></canvas>
+    <div class="video-preview-control">
+        <label for="video-slider"></label>
+        <input class="video-slider" type="range" min="0" max="512" value="0" step="1">
+    </div>
+</div>
+{% endblock %}
+
+{% block js_vid_prev %}
+<script>
+</script>
+<script src="{% static 'process/video_preview.js' %}"></script>
+{% endblock %}

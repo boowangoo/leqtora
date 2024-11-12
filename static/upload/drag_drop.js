@@ -47,9 +47,6 @@ const drops = [
 ]
 
 drops.forEach((drop) => {
-  // console.log("input_elm", input_elm);
-  
-
   drop.elm.addEventListener("change", _ => {
     input_elm = drop.elm.querySelector(".dropzone_input");
     if (input_elm.files.length) {
@@ -72,7 +69,6 @@ drops.forEach((drop) => {
     e.preventDefault();
 
     if (e.dataTransfer.files.length == 1) {
-      // console.log("input_elm.files", input_elm.files);
       input_elm = drop.elm.querySelector(".dropzone_input");
       input_elm.files = e.dataTransfer.files;
       file = input_elm.files[0];

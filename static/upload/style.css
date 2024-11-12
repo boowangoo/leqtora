@@ -38,6 +38,7 @@
     overflow: hidden;
     background-color: #ffffff;
     background-size: cover;
+    background-position: center center;
     position: relative;
 }
 

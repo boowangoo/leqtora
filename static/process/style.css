@@ -1,34 +1,59 @@
-.video-slider {
-    width: 100%;
+.container {
+    padding: 5vh 10vw 0 10vw;
 }
 
-.preview-options {
+.processing-area {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
-.video-preview-img {
-    max-width: 100%;
+/* video preview */
+.video-preview {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.video-slider {
+    width: 100%;
+}
+
+/* .video-preview-img { */
+.video-preview-canvas {
+    width: 100%;
 }
 
 .video-preview-control {
     text-align: left;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    /* display: grid;
+    grid-template-columns: 1fr 3fr; */
+    width: 100%;
 }
 
 .video-preview-control label {
     display: block;
-    font: 20px "Impact", sans-serif;
-    min-width: 160px;
+    font-size: 0.75rem;
+    /* width: 100%; */
 }
 
-.video-preview-control input {
+/* preview options */
+.preview-options {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* captions preview */
+.captions-preview {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+}
+
+.captions-preview textarea {
     width: 100%;
-    min-width: calc(100% - 160px);
+    height: 100%;
 }
-
 
 @media (max-width: 650px) {
     .preview-options {

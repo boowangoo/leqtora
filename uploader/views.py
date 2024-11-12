@@ -5,12 +5,13 @@ from django.http import HttpResponseBadRequest, FileResponse, JsonResponse
 import uuid
 import os
 
-from .utils.screenshot_video import take_screenshot
+from .utils.read_video import take_screenshot, get_video_info
 
 def upload_page(request):
     return render(request, 'uploader/upload.html')
 
 def handle_upload(request):
+    print('Handling upload')
     # print form data
     print(request.POST)
     if request.method == 'POST' and request.FILES:
@@ -43,12 +44,11 @@ def handle_upload(request):
             'video': video_name,
             'captions': captions_name,
         }
-        
         return redirect('process_upload')
-    
     return render(request, 'uploader/upload.html')
 
 def process_upload(request):
+    print('Processing upload')
     user_id = request.session.get('uuid').replace('-', '')
     uploaded_files = request.session.get('uploaded_files', {})
 
@@ -61,22 +61,28 @@ def process_upload(request):
             'captions_url': os.path.join(settings.MEDIA_URL, user_id, captions_path)
         }
         return render(request, 'uploader/process.html', context)
-
     return redirect('upload_page')
 
 def handle_video_prev(request):
+    print('Handling video preview')
     user_id = request.session.get('uuid').replace('-', '')
-    slider_val = request.GET.get('slider')
+    if bool(int(request.GET.get('info', default=False))):
+        frame_cnt, fps, vid_w, vid_h = get_video_info(user_id)
+        return JsonResponse({ 'frame_cnt': frame_cnt, 'fps': fps, 'width': vid_w, 'height': vid_h })
 
+    frame = int(request.GET.get('frame', 0))
     prev_dir = os.path.join(settings.MEDIA_ROOT, user_id, 'preview')
     os.makedirs(prev_dir, exist_ok=True)
 
-    frame, frame_cnt, fps = take_screenshot(user_id, slider_val)
-    return JsonResponse({ 'user_id': user_id, 'frame': frame, 'frame_cnt': frame_cnt, "fps": fps })
+    take_screenshot(user_id, frame)
+    return JsonResponse({ 'user_id': user_id, 'frame_id': f'{frame:09}' })
 
-def handle_preview_img(request, user_id, frame_id):
+def handle_preview_img(_, user_id, frame_id):
     img_path = os.path.join(settings.MEDIA_ROOT, user_id, 'preview', f'video_{frame_id}.jpg')
     if not os.path.exists(img_path):
         return HttpResponseBadRequest('Image not found.')
     return FileResponse(open(img_path, 'rb'), content_type='image/jpg')
-    
+
+def handle_preview_opts(request):
+    # print('Handling
+    return render(request, 'uploader/process/preview-options.html', {})
